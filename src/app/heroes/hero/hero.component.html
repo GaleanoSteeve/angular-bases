@@ -1,0 +1,25 @@
+<div>
+    <h1>{{ name }}</h1>
+
+    <dl> <!-- definition list -->
+        <td>Nombre:</td> <!-- table description -->
+        <dd>{{ name }}</dd> <!-- description -->
+
+        <td>Edad:</td>
+        <dd>{{ age }}</dd>
+
+        <!-- Los metodos se deben invocar con parentesis al final -->
+        <td>Método:</td>
+        <dd> {{ getHeroDescription() }} </dd>
+
+        <td>Capitalizado:</td>
+        <dd> {{ capitalizeName }} </dd>
+    </dl>
+
+    <!-- *ngIf: condicional embebido en el HTML para mostrar o no un elemento -->
+    <!-- En el ejemplo: si la variable name en hero.component.ts es igual a Noé muestra el boton, de lo contrario lo oculta -->
+
+    <button class="btn btn-primary mx-2" *ngIf="name === 'Noé'" (click)="changeHero()">Cambiar nombre</button>
+    <button class="btn btn-primary" *ngIf="age !== 20" (click)="changeAge()">Cambiar edad</button>
+    <button class="btn btn-primary mx-2" (click)="resetForm()">Reset</button>
+</div>

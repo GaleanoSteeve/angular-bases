@@ -1,0 +1,30 @@
+<!-- *ngFor: ciclo for para el lado del template(HTML). Permite hacer duplicidad de elementos-->
+
+<div style="border: solid;">
+    <h3>Listado de Héroes</h3>
+
+    <!-- <ul class="mt-2 list-group">
+    <li class="list-group-item">Job</li>
+    <li class="list-group-item">Noé</li>
+    <li class="list-group-item">Gad</li>
+    <li class="list-group-item">Lot</li>
+    <li class="list-group-item">José</li>
+</ul> -->
+
+    <div *ngIf="deletedName; else nothingDeleted">
+        <h5>Héroe borrado: <small class="text-danger">{{ deletedName }}</small></h5>
+    </div>
+
+    <!-- ng-template: no muestra elementos hasta que no se cumpla la condicion del if. Se conoce como una referencia local-->
+    <ng-template #nothingDeleted>
+        <h5>No ha borrado nada</h5>
+    </ng-template>
+
+    <button *ngIf="names.length > 0" class="btn btn-outline-danger mt-4" (click)="removeLastHero()">Borrar último
+        héroe</button>
+
+    <ul class="mt-2 list-group">
+        <!-- *ngFor convierte el <li> en un template y lo usa para duplicarlo basado en la cantidad de heroNames-->
+        <li class="list-group-item" *ngFor="let name of names"><strong>{{ name }}</strong></li>
+    </ul>
+</div>
